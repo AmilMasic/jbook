@@ -25,7 +25,7 @@ export const fetchPlugin = (inputCode: string) => {
         if (cachedResult) {
           return cachedResult;
         }
-        const { data, request } = await axios.get(args.path);
+        const { request, data} = await axios.get(args.path);
         const escaped = data
           .replace(/\n/g, '')
           .replace(/"/g, '\\"')
