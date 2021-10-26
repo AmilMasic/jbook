@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { useState, useEffect, useRef} from 'react';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
+import 'bulmaswatch/superhero/bulmaswatch.min.css';
 
 import CodeEditor from './components/code-editor';
 
