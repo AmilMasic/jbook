@@ -30,7 +30,7 @@ const onFormatClick = () => {
     useTabs: false,
     semi: true,
     singleQuote: true
-  })
+  }).replace(/\n$/, '')
   editorRef.current.setValue(formatted);
 }
 
