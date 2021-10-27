@@ -1,17 +1,21 @@
 import * as esbuild from 'esbuild-wasm';
 import ReactDOM from 'react-dom';
+
 import { useState, useEffect, useRef} from 'react';
+
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
+
 import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import CodeEditor from './components/code-editor';
+
 import Preview from './components/preview';
 
 const App = () => {
+
   const ref = useRef<any>();
   const [code, setCode] = useState('');
   const [input, setInput] = useState('');
-
 
   const startService = async () => {
     ref.current = await esbuild.startService({
@@ -19,6 +23,7 @@ const App = () => {
       wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm'
     });
   };
+
   useEffect(()=> {
     startService();
   }, []);
@@ -27,8 +32,6 @@ const App = () => {
     if (!ref.current){
       return;
     }
-
-
 
     const result = await ref.current.build({
       entryPoints: ['index.js'],
@@ -42,27 +45,19 @@ const App = () => {
     })
 
     setCode(result.outputFiles[0].text);
-
   };
 
-
-
-  return (<div>
-          <CodeEditor initialValue="const a = 1;"
-            onChange={(value) => setInput(value)}
-          />
-          <textarea
-            value={input}
-            onChange={e => setInput(e.target.value)}
-          ></textarea>
-          <div>
-            <button onClick={onClick}>Submit</button>
-          </div>
-          <Preview code={code}/>
-        </div>
+  return (
+    <div>
+      <CodeEditor initialValue="const a = 1;"
+        onChange={(value) => setInput(value)}
+      />
+      <div>
+        <button onClick={onClick}>Submit</button>
+      </div>
+      <Preview code={code}/>
+    </div>
   );
 };
-
-
 
 ReactDOM.render(<App />, document.querySelector('#root'));
