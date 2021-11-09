@@ -1,4 +1,4 @@
-import { ActionType } frpom '../action-types';
+import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import { Cell } from '../cell';
 
