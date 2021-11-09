@@ -3,6 +3,7 @@ import './preview.css';
 
 interface PreviewProps {
   code: string;
+  err: string;
 }
 
 const html = `
@@ -55,6 +56,7 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
         sandbox="allow-scripts"
         srcDoc={html}
       />
+    
     </div>
   )
 };
