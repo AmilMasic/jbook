@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import './text-editor.css';
 import MDEditor from '@uiw/react-md-editor';
 
 const TextEditor: React.FC = () => {
