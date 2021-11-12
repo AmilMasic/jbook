@@ -1,3 +1,4 @@
+import './cell-list-item.css';
 import ActionBar from './action-bar';
 import { Cell } from '../state';
 import CodeCell from './code-cell';
@@ -13,10 +14,12 @@ const CellListItem: React.FC<CellListItemProps> = ({ cell }) => {
   } else {
     child = <TextEditor cell={cell} />
   }
-  return <div>
-  <ActionBar id={cell.id}/>
-    {child}
-  </div>
+  return (
+    <div className="cell-list-item">
+      {child}
+      <ActionBar id={cell.id}/>
+    </div>
+  );
 };
 
 export default CellListItem;
