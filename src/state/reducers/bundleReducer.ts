@@ -7,7 +7,7 @@ interface BundlesState {
     loading: boolean;
     code: string;
     err: string;
-  }
+  } | undefined;
 }
 
 
@@ -31,7 +31,9 @@ const reducer = produce((state: BundlesState = initialState, action: Action): Bu
       return state;
     default:
       return state;
-  }
-});
+    }
+  },
+  initialState
+);
 
 export default reducer;
